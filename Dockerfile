@@ -18,4 +18,13 @@ RUN apt-get update && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
-CMD ["python", "main.py"]
+FROM node:lts as webui
+ARG repo_url=https://github.com/biliup/biliup
+ARG branch_name=master
+RUN set -eux; \
+	git clone --depth 1 --branch "$branch_name" "$repo_url"; \
+	cd biliup; \
+	npm install; \
+	npm run build
+
+#CMD ["python", "main.py"]
