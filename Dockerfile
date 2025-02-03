@@ -93,8 +93,8 @@ RUN set -eux; \
 		/var/tmp/* \
 		/var/log/*
 
-COPY --from=webui /biliup/biliup/web/public/ /biliup/biliup/web/public/
-
+#COPY --from=webui /biliup/biliup/web/public/ /biliup/biliup/web/public/
+COPY --from=webui /biliup/biliup/web/public/ /opt/biliup/biliup/web/public
 RUN apt-get update && \
     apt-get install -y curl gnupg vim nano iputils-ping net-tools procps && \
     curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
