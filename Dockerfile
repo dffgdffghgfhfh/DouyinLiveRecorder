@@ -7,8 +7,7 @@ COPY . /app
 ENV TERM=xterm
 
 RUN apt-get update && \
-    apt-get install -y curl gnupg \
-    vim nano iputils-ping net-tools && \
+    apt-get install -y curl gnupg vim nano iputils-ping net-tools procps && \
     curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
@@ -20,4 +19,5 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata
 
 CMD ["python", "main.py"]
+
 
