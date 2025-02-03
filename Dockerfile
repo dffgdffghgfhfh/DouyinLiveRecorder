@@ -19,10 +19,11 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # 将 Rust 的路径添加到环境变量中
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-# 克隆 biliup-rs 项目并构建
-RUN git clone https://github.com/biliup/biliup-rs.git /biliup-rs && \
-    cd /biliup-rs && \
-    cargo install --path .
+# 克隆 biliup-rs 项目
+RUN git clone https://github.com/biliup/biliup-rs.git /biliup-rs
+
+# 进入到实际包目录，构建并安装
+RUN cd /biliup-rs/biliup && cargo install --path .
 
 # 安装 Python 依赖
 RUN pip install --no-cache-dir -r requirements.txt
@@ -34,3 +35,4 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata
 
 CMD ["python", "main.py"]
+
