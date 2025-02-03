@@ -24,7 +24,7 @@ WORKDIR /opt
 
 # 将当前目录内容复制到容器的 /app 目录
 COPY . /opt
-#VOLUME /opt
+VOLUME /opt
 
 RUN set -eux; \
 	\
