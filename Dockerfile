@@ -104,8 +104,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && \
     apt-get install -y ffmpeg tzdata && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata
+    dpkg-reconfigure -f noninteractive tzdata && \
+    chmod +x biliup
     
-
 CMD ["python"]
 #CMD ["python", "main.py"]
+#ENTRYPOINT ["biliup"]
