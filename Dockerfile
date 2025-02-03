@@ -1,7 +1,9 @@
 FROM python:3.11-slim
-WORKDIR /opt/
-#VOLUME /opt/config
-COPY . /opt/
+
+WORKDIR /app
+
+COPY . /app
+
 ENV TERM=xterm
 
 RUN apt-get update && \
@@ -17,7 +19,3 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata
 
 CMD ["python", "main.py"]
-
-
-
-
