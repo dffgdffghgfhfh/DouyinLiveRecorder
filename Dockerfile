@@ -16,6 +16,7 @@ ENV TZ=Asia/Shanghai
 EXPOSE 19159/tcp
 #VOLUME /opt
 WORKDIR /opt
+VOLUME [ "/opt/data" ]
 COPY . /opt
 ENV TERM=xterm
 RUN set -eux; \
@@ -106,7 +107,7 @@ RUN apt-get update && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
     #chmod +x biliup
-    
-CMD ["python"]
+
+#CMD ["python"]
 #CMD ["python", "main.py"]
 #ENTRYPOINT ["biliup"]
