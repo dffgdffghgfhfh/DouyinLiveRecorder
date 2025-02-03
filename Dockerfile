@@ -15,10 +15,8 @@ ARG branch_name=master
 ENV TZ=Asia/Shanghai
 EXPOSE 19159/tcp
 #VOLUME /opt
-WORKDIR /opt
 VOLUME [ "/opt/data" ]
-COPY . /opt
-ENV TERM=xterm
+
 RUN set -eux; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
@@ -93,8 +91,11 @@ RUN set -eux; \
 		/var/tmp/* \
 		/var/log/*
 
-#COPY --from=webui /biliup/biliup/web/public/ /biliup/biliup/web/public/
-COPY --from=webui /biliup/biliup/web/public/ /opt/biliup/biliup/web/public
+COPY --from=webui /biliup/biliup/web/public/ /biliup/biliup/web/public/
+#COPY --from=webui /biliup/biliup/web/public/ /opt/biliup/biliup/web/public
+WORKDIR /opt
+COPY . /opt
+ENV TERM=xterm
 RUN apt-get update && \
     apt-get install -y curl gnupg vim nano iputils-ping net-tools procps && \
     curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
