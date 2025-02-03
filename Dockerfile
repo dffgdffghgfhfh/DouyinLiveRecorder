@@ -1,8 +1,17 @@
+FROM node:lts as webui
+ARG repo_url=https://github.com/biliup/biliup
+ARG branch_name=master
+RUN set -eux; \
+	git clone --depth 1 --branch "$branch_name" "$repo_url"; \
+	cd biliup; \
+	npm install; \
+	npm run build
+
 FROM python:3.11-slim
 
-WORKDIR /opt/data
+WORKDIR /opt
 
-#COPY . /opt
+COPY . /opt
 
 ENV TERM=xterm
 
@@ -17,7 +26,7 @@ RUN apt-get update && \
     apt-get install -y ffmpeg tzdata && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
+    
 
-
-
-CMD ["python", "main.py"]
+CMD ["python"]
+#CMD ["python", "main.py"]
