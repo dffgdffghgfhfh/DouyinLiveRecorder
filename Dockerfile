@@ -93,7 +93,7 @@ RUN set -eux; \
 COPY --from=webui /biliup/biliup/web/public/ /biliup/biliup/web/public/
 WORKDIR /opt
 
-ENTRYPOINT ["biliup"]
+#ENTRYPOINT ["biliup"]
 #FROM python:3.11-slim
 
 # 设置工作目录
