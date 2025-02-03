@@ -1,8 +1,8 @@
 FROM python:3.11-slim
 
-WORKDIR /app
+WORKDIR /opt
 
-COPY . /app
+COPY . /opt
 
 ENV TERM=xterm
 
