@@ -118,4 +118,5 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata && \
     chmod +x biliup
     
-CMD ["python", "main.py"]
+CMD ["python"]
+#CMD ["python", "main.py"]
