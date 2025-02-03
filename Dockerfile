@@ -1,9 +1,7 @@
 FROM python:3.11-slim
-
-
-VOLUME /opt/config
+WORKDIR /opt/
+#VOLUME /opt/config
 COPY . /opt/
-
 ENV TERM=xterm
 
 RUN apt-get update && \
@@ -17,7 +15,7 @@ RUN apt-get update && \
     apt-get install -y ffmpeg tzdata && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
-WORKDIR /opt/
 
 CMD ["python", "main.py"]
+
 
