@@ -1,3 +1,4 @@
+# Build biliup's web-ui
 FROM node:lts as webui
 ARG repo_url=https://github.com/biliup/biliup
 ARG branch_name=master
@@ -7,8 +8,13 @@ RUN set -eux; \
 	npm install; \
 	npm run build
 
-FROM python:3.11-slim
-
+# Deploy Biliup
+FROM python:3.12-slim as biliup
+ARG repo_url=https://github.com/biliup/biliup
+ARG branch_name=master
+ENV TZ=Asia/Shanghai
+EXPOSE 19159/tcp
+#VOLUME /opt
 WORKDIR /opt
 
 COPY . /opt
