@@ -1,7 +1,8 @@
 FROM python:3.11-slim
-WORKDIR /opt/
+
 #VOLUME /opt/config
-COPY . /opt/
+COPY . /opt/data
+WORKDIR /opt/data
 ENV TERM=xterm
 
 RUN apt-get update && \
