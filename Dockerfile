@@ -15,8 +15,8 @@ ARG branch_name=master
 ENV TZ=Asia/Shanghai
 EXPOSE 19159/tcp
 #VOLUME /opt
-VOLUME [ "/opt/data", "/opt/backup_config", "/opt/config"]
-
+VOLUME [ "/opt/data", "/opt/backup_config"]
+#VOLUME [ "/opt/data", "/opt/backup_config", "/opt/config"]
 RUN set -eux; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
