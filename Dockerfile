@@ -1,8 +1,8 @@
 FROM python:3.11-slim
 
-WORKDIR /opt/data
+WORKDIR /opt/
 
-COPY . /opt/data
+COPY . /opt/
 
 RUN apt-get update && \
     apt-get install -y curl gnupg && \
