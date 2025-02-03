@@ -15,7 +15,7 @@ ARG branch_name=master
 ENV TZ=Asia/Shanghai
 EXPOSE 19159/tcp
 #VOLUME /opt
-VOLUME [ "/opt/data" ]
+VOLUME [ "/opt/data", "/opt/backup_config"]
 
 RUN set -eux; \
 	\
