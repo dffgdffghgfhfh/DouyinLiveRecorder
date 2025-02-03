@@ -25,8 +25,8 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # 克隆 biliup-rs 项目到工作目录
 RUN git clone https://github.com/biliup/biliup-rs.git /app/biliup-rs
 
-# 在工作目录中执行 biliup-rs 的构建
-RUN cd /app/biliup-rs && cargo install --path .
+# 进入实际包目录并执行 cargo install
+RUN cd /app/biliup-rs/biliup && cargo install --path .
 
 # 安装 Python 依赖
 RUN pip install --no-cache-dir -r requirements.txt
