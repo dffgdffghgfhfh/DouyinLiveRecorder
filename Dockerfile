@@ -18,7 +18,7 @@ RUN apt-get update && \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # 克隆并构建 biliup-rs
-RUN git clone https://github.com/nokomori/biliup-rs.git /biliup-rs && \
+RUN git clone https://github.com/biliup/biliup-rs.git /biliup-rs && \
     cd /biliup-rs && \
     cargo install --path .
 
