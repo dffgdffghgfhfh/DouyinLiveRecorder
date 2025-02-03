@@ -14,7 +14,17 @@ ARG repo_url=https://github.com/biliup/biliup
 ARG branch_name=master
 ENV TZ=Asia/Shanghai
 EXPOSE 19159/tcp
-VOLUME /opt
+WORKDIR /opt
+
+#ENTRYPOINT ["biliup"]
+#FROM python:3.11-slim
+
+# 设置工作目录
+#WORKDIR /app
+
+# 将当前目录内容复制到容器的 /app 目录
+COPY . /opt
+#VOLUME /opt
 
 RUN set -eux; \
 	\
@@ -91,16 +101,7 @@ RUN set -eux; \
 		/var/log/*
 
 COPY --from=webui /biliup/biliup/web/public/ /biliup/biliup/web/public/
-WORKDIR /opt
 
-#ENTRYPOINT ["biliup"]
-#FROM python:3.11-slim
-
-# 设置工作目录
-#WORKDIR /app
-
-# 将当前目录内容复制到容器的 /app 目录
-COPY . /opt
 
 # 设置环境变量 TERM
 ENV TERM=xterm
