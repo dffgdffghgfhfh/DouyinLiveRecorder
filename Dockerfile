@@ -17,6 +17,6 @@ RUN apt-get update && \
     apt-get install -y ffmpeg tzdata && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
-
+VOLUME /opt
 CMD ["python", "main.py"]
 
