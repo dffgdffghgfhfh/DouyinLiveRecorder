@@ -111,5 +111,4 @@ RUN apt-get update && \
 
 #CMD ["python"]
 #CMD ["python", "main.py"]
-
 ENTRYPOINT ["biliup"]
