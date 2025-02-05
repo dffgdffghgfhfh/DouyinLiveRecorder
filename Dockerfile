@@ -26,4 +26,6 @@ RUN apt-get update && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
+CMD ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 #CMD ["python", "main.py"]
