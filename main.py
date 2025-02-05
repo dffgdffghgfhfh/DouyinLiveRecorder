@@ -79,10 +79,10 @@ clear_command = "cls" if os_type == 'nt' else "clear"
 color_obj = utils.Color()
 os.environ['PATH'] = ffmpeg_path + os.pathsep + current_env_path
 
-
 def signal_handler(_signal, _frame):
-    sys.exit(0)
-
+    logger.info("收到 SIGTERM 信号，但忽略退出操作。")
+    # 或者直接 pass，不做任何处理
+    # pass
 
 signal.signal(signal.SIGTERM, signal_handler)
 
