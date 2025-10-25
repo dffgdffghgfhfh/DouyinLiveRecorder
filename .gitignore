@@ -52,6 +52,7 @@ coverage.xml
 cover/
 
 # Translations
+*.mo
 *.pot
 
 # Django stuff:
@@ -81,12 +82,6 @@ target/
 profile_default/
 ipython_config.py
 
-# DouyinLiveRecord
-backup_config/
-logs/
-node/
-node-v*.zip
-
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
@@ -104,7 +99,7 @@ node-v*.zip
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
 #   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-poetry.lock
+#poetry.lock
 
 # pdm
 #   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
@@ -164,4 +159,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-backup_config/
+# Directory used by Appwrite CLI for local development
+.appwrite
